@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cloudflare Site</title>
+    <style>
+        /* 1. CSS STYLES (The Look) */
+        :root {
+            --bg-color: #0f172a; /* Dark Navy */
+            --card-bg: #1e293b;
+            --accent: #f48120;   /* Cloudflare Orange */
+            --text-main: #f1f5f9;
+            --text-sub: #94a3b8;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        /* Profile Image Area */
+        .avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--accent), #d946ef);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+
+        h1 { margin: 0; font-size: 2rem; }
+        p { color: var(--text-sub); margin-top: 5px; margin-bottom: 30px; }
+
+        /* Links / Buttons */
+        .link-card {
+            background-color: var(--card-bg);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text-main);
+            display: block;
+            transition: transform 0.2s, background-color 0.2s;
+            border: 1px solid rgba(255,255,255,0.05);
+            font-weight: 500;
+        }
+
+        .link-card:hover {
+            transform: translateY(-3px);
+            background-color: #334155;
+            border-color: var(--accent);
+        }
+
+        /* Status Badge */
+        .status {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 20px;
+            border: 1px solid rgba(16, 185, 129, 0.4);
+        }
+
+        footer {
+            margin-top: 40px;
+            font-size: 0.8rem;
+            color: var(--text-sub);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="avatar">🚀</div>
+
+        <h1>Hello, World</h1>
+        <div class="status">● System Operational</div>
+        <p>Developer • Designer • Cloud Enthusiast</p>
+
+        <a href="#" class="link-card">📂 View My Portfolio</a>
+        <a href="#" class="link-card">📸 Check my Instagram</a>
+        <a href="#" class="link-card">🐦 Follow on X (Twitter)</a>
+        <a href="mailto:email@example.com" class="link-card">✉️ Contact Me</a>
+
+        <footer>
+            Hosted on Cloudflare Pages<br>
+            <span id="visitor-loc">Loading location...</span>
+        </footer>
+    </div>
+
+    <script>
+        // 2. JAVASCRIPT (The Logic)
+        // This grabs the visitor's location using Cloudflare's specific headers
+        // Note: This specific feature works best once deployed!
+        fetch('https://1.1.1.1/cdn-cgi/trace')
+            .then(res => res.text())
+            .then(data => {
+                const lines = data.split('\n');
+                const locLine = lines.find(line => line.startsWith('loc='));
+                if (locLine) {
+                    const country = locLine.split('=')[1];
+                    document.getElementById('visitor-loc').innerText = `Visitor from: ${country}`;
+                }
+            })
+            .catch(e => {
+                document.getElementById('visitor-loc').innerText = "Location hidden";
+            });
+    </script>
+</body>
+</html>
