@@ -1,0 +1,95 @@
+/* src/style.css */
+:root {
+    --bg-color: #050505;
+    --card-bg: #151515;
+    --primary-blue: #2563eb;
+    --primary-red: #dc2626;
+    --text-main: #ffffff;
+    --text-sub: #a3a3a3;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    background-image: radial-gradient(circle at top left, rgba(37, 99, 235, 0.2), transparent 40%),
+                      radial-gradient(circle at bottom right, rgba(220, 38, 38, 0.2), transparent 40%);
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+}
+
+/* LOGO */
+.server-logo {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 15px rgba(37, 99, 235, 0.5));
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+h1 { margin: 0; font-size: 2rem; letter-spacing: 1px; text-transform: uppercase; }
+h2 { color: var(--primary-blue); border-bottom: 1px solid #333; padding-bottom: 10px; }
+p { color: var(--text-sub); margin-top: 5px; margin-bottom: 30px; line-height: 1.6; }
+
+/* LINKS */
+.link-card {
+    background-color: var(--card-bg);
+    padding: 18px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    border: 1px solid #333;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.link-card:hover {
+    transform: scale(1.02);
+    background-color: #222;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
+}
+
+.store-btn:hover { border-color: var(--primary-red); box-shadow: 0 0 10px rgba(220, 38, 38, 0.3); }
+
+.status-pill {
+    display: inline-block;
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    margin-bottom: 20px;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    font-family: monospace;
+}
+
+/* RULES LIST specific styles */
+.rules-list { text-align: left; background: var(--card-bg); padding: 20px; border-radius: 8px; border: 1px solid #333; margin-bottom: 20px;}
+.rules-list li { margin-bottom: 10px; color: var(--text-sub); }
+.back-btn { background: transparent; border: 1px solid var(--text-sub); font-size: 0.8rem; }
+
+footer { margin-top: 40px; font-size: 0.75rem; color: #555; }
