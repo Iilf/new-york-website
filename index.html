@@ -3,22 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Cloudflare Site</title>
+    <title>New York Roleplay</title>
     <style>
-        /* 1. CSS STYLES (The Look) */
         :root {
-            --bg-color: #0f172a; /* Dark Navy */
-            --card-bg: #1e293b;
-            --accent: #f48120;   /* Cloudflare Orange */
-            --text-main: #f1f5f9;
-            --text-sub: #94a3b8;
+            --bg-color: #050505;       /* Pitch Black */
+            --card-bg: #151515;        /* Dark Grey */
+            --primary-blue: #2563eb;   /* NY Blue */
+            --primary-red: #dc2626;    /* NY Red */
+            --text-main: #ffffff;
+            --text-sub: #a3a3a3;
         }
 
         body {
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-color);
+            /* Cool subtle gradient background */
+            background-image: radial-gradient(circle at top left, rgba(37, 99, 235, 0.2), transparent 40%),
+                              radial-gradient(circle at bottom right, rgba(220, 38, 38, 0.2), transparent 40%);
             color: var(--text-main);
             display: flex;
             flex-direction: column;
@@ -29,89 +32,102 @@
 
         .container {
             width: 90%;
-            max-width: 400px;
+            max-width: 450px;
             text-align: center;
         }
 
-        /* Profile Image Area */
-        .avatar {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, var(--accent), #d946ef);
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
+        /* LOGO STYLING */
+        .server-logo {
+            width: 100%;
+            max-width: 250px; /* Limits logo size so it looks good */
+            height: auto;
+            margin-bottom: 20px;
+            /* Adds a cool glow effect behind the logo */
+            filter: drop-shadow(0 0 15px rgba(37, 99, 235, 0.5));
+            animation: float 6s ease-in-out infinite;
         }
 
-        h1 { margin: 0; font-size: 2rem; }
+        /* Floating animation for the logo */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        h1 { margin: 0; font-size: 2rem; letter-spacing: 1px; text-transform: uppercase; }
         p { color: var(--text-sub); margin-top: 5px; margin-bottom: 30px; }
 
-        /* Links / Buttons */
+        /* BUTTONS */
         .link-card {
             background-color: var(--card-bg);
-            padding: 15px;
+            padding: 18px;
             margin-bottom: 15px;
-            border-radius: 12px;
+            border-radius: 8px;
             text-decoration: none;
             color: var(--text-main);
-            display: block;
-            transition: transform 0.2s, background-color 0.2s;
-            border: 1px solid rgba(255,255,255,0.05);
-            font-weight: 500;
+            display: flex; /* Aligns icon and text */
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            border: 1px solid #333;
+            font-weight: 700;
+            text-transform: uppercase;
         }
 
         .link-card:hover {
-            transform: translateY(-3px);
-            background-color: #334155;
-            border-color: var(--accent);
+            transform: scale(1.02);
+            background-color: #222;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
         }
 
-        /* Status Badge */
-        .status {
+        /* Special style for the Store button (Red) */
+        .store-btn:hover {
+            border-color: var(--primary-red);
+            box-shadow: 0 0 10px rgba(220, 38, 38, 0.3);
+        }
+
+        .status-pill {
             display: inline-block;
-            background: rgba(16, 185, 129, 0.2);
+            background: rgba(16, 185, 129, 0.1);
             color: #10b981;
-            padding: 5px 12px;
-            border-radius: 20px;
+            padding: 4px 12px;
+            border-radius: 4px;
             font-size: 0.8rem;
             margin-bottom: 20px;
-            border: 1px solid rgba(16, 185, 129, 0.4);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            font-family: monospace;
         }
 
         footer {
             margin-top: 40px;
-            font-size: 0.8rem;
-            color: var(--text-sub);
+            font-size: 0.75rem;
+            color: #555;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <div class="avatar">🚀</div>
+        <img src="logo.png" alt="New York Roleplay Logo" class="server-logo">
 
-        <h1>Hello, World</h1>
-        <div class="status">● System Operational</div>
-        <p>Developer • Designer • Cloud Enthusiast</p>
+        <div class="status-pill">🟢 SERVER STATUS: ONLINE</div>
+        
+        <p>The #1 Roleplay Experience in New York.</p>
 
-        <a href="#" class="link-card">📂 View My Portfolio</a>
-        <a href="#" class="link-card">📸 Check my Instagram</a>
-        <a href="#" class="link-card">🐦 Follow on X (Twitter)</a>
-        <a href="mailto:email@example.com" class="link-card">✉️ Contact Me</a>
+        <a href="#" class="link-card">🎮 Connect to Server</a>
+        <a href="#" class="link-card">💬 Join our Discord</a>
+        <a href="#" class="link-card">📜 Server Rules</a>
+        <a href="#" class="link-card store-btn">🛒 Server Store (Donations)</a>
 
         <footer>
-            Hosted on Cloudflare Pages<br>
-            <span id="visitor-loc">Loading location...</span>
+            &copy; 2025 New York Roleplay<br>
+            <span id="visitor-loc">Loading IP Info...</span>
         </footer>
     </div>
 
     <script>
-        // 2. JAVASCRIPT (The Logic)
-        // This grabs the visitor's location using Cloudflare's specific headers
-        // Note: This specific feature works best once deployed!
+        // Keeps the location feature but makes it look more "tech"
         fetch('https://1.1.1.1/cdn-cgi/trace')
             .then(res => res.text())
             .then(data => {
@@ -119,11 +135,11 @@
                 const locLine = lines.find(line => line.startsWith('loc='));
                 if (locLine) {
                     const country = locLine.split('=')[1];
-                    document.getElementById('visitor-loc').innerText = `Visitor from: ${country}`;
+                    document.getElementById('visitor-loc').innerText = `CONNECTION ESTABLISHED: ${country}`;
                 }
             })
             .catch(e => {
-                document.getElementById('visitor-loc').innerText = "Location hidden";
+                document.getElementById('visitor-loc').innerText = "CONNECTION SECURE";
             });
     </script>
 </body>
