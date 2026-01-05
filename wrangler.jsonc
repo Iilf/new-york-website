@@ -1,0 +1,9 @@
+{
+  "name": "ny-roleplay-site",
+  "compatibility_date": "2025-01-05",
+  "assets": {
+    "directory": "./src",
+    "binding": "ASSETS"
+  },
+  "main": null
+}
